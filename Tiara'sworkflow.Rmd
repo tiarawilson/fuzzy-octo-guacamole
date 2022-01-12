@@ -1,0 +1,26 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+
+Import hospital data
+```{r}
+library(tidyverse)
+visits_by_hospital <- read_csv("https://raw.githubusercontent.com/philbowsher/Foundation-of-the-R-Workflow-workshop-2019-09-06/master/Examples/data/visits_by_hospital.csv")
+```
+
+
+```{r}
+```finaldataset <- visits_by_hospital %>%
+ filter(!(name %in% c("hospital medicine associates llc", "newport hospital", "rhode island hospital", 
+"south county hospital"))) %>%
+ filter(!(encounterclass %in% "wellness"
+```
+
+data viz of top visits
+```{r}
+ggplot(finaldataset) +
+  aes(x = encounterclass, y = n) +
+  geom_boxplot(shape = "circle", fill = "#112446") +
+  theme_minimal()
